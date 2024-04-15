@@ -1,10 +1,13 @@
 import { Box, OrbitControls, Plane } from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
 import { MacModel } from "./components/MacModel"
+import { Suspense } from "react"
+import Loding from "./components/Loding"
 
 function App() {
   return (
     <>
+    <Suspense fallback={<Loding/>}>
       <Canvas
         shadows
         gl={{antialias:true}}
@@ -21,7 +24,8 @@ function App() {
           <planeGeometry args={[4,4,4]}/>
           <meshStandardMaterial color={'orange'}/>
         </mesh>
-      </Canvas>
+      </Canvas>      
+    </Suspense>
     </>
   )
 }
